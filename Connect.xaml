@@ -1,0 +1,22 @@
+﻿<Window x:Class="Asset_Managing_System.Connect"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Asset_Managing_System"
+		mc:Ignorable="d"
+		Title="Connect" Height="184" Width="353">
+	<Grid x:Name="Connect1">
+		<Label Content="Host" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+		<Label Content="Name" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+		<Label Content="Username" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+		<Label Content="Password" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+		<TextBox x:Name="Hostname" HorizontalAlignment="Left" Margin="52,14,0,0" Text="127.0.0.1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="DBName" HorizontalAlignment="Left" Margin="59,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="DBUsername" HorizontalAlignment="Left" Margin="83,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+		<PasswordBox x:Name="DBPasswd" HorizontalAlignment="Left" Margin="79,104,0,0" VerticalAlignment="Top" Width="120"/>
+		<Button x:Name="ConnectDB" Content="Connect" HorizontalAlignment="Left" Margin="232,86,0,0" VerticalAlignment="Top" Click="ConnectDB_Click"/>
+		<TextBox x:Name="DBPort" HorizontalAlignment="Left" Margin="177,14,0,0" Text="3306" TextWrapping="Wrap" VerticalAlignment="Top" Width="61"/>
+
+	</Grid>
+</Window>
