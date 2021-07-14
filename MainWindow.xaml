@@ -15,7 +15,7 @@
 			</MenuItem>
 			<MenuItem Header="编辑">
 				<MenuItem Name="AddDevice" Header="添加设备" Click="AddDevice_Click"/>
-				<MenuItem Name="EditDevice" Header="编辑设备"/>
+				<MenuItem Name="EditDevice" Header="编辑设备" Click="EditDevice_Click"/>
 				<MenuItem Name="RemoveDevice" Header="移除设备"/>
 			</MenuItem>
 			<MenuItem Header="Database">

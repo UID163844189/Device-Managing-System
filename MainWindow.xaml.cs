@@ -34,9 +34,9 @@ namespace Asset_Managing_System
 			{
 				ConnectedDB.Text = File.ReadAllText("connectionInfo.txt");
 			}
-			finally
+			catch (Exception ex)
 			{
-				
+
 			}
 
 		}
@@ -54,6 +54,7 @@ namespace Asset_Managing_System
 
 		private void Refresh_Click(object sender, RoutedEventArgs e)
 		{
+			RefreshStatusBar();
 			MySqlConnection connection = new MySqlConnection(File.ReadAllText("connectionInfo.txt"));
 			Status.Text = "正在连接数据库……";
 			try
@@ -67,17 +68,6 @@ namespace Asset_Managing_System
 				DeviceList.Items.Clear();
 				while (reader.Read())
 				{
-					/*
-					int index = this.dataGridView1.Rows.Add();
-
-					this.dataGridView1.Rows[index].Cells[0].Value = reader.GetString("name");
-					this.dataGridView1.Rows[index].Cells[1].Value = reader.GetString("describe");
-					this.dataGridView1.Rows[index].Cells[2].Value = reader.GetString("price");
-					this.dataGridView1.Rows[index].Cells[3].Value = reader.GetInt32("salenumber");
-					*/
-
-					//ListViewItem item = new ListViewItem();
-
 					Device device = new Device
 					{
 						ID = reader.GetInt32("ID"),
@@ -86,7 +76,7 @@ namespace Asset_Managing_System
 						Model = reader.GetString("Model"),
 						Vendor = reader.GetString("Vendor"),
 						Price = reader.GetFloat("Price"),
-						SN=reader.GetString("SN")
+						SN = reader.GetString("SN")
 					};
 					DeviceList.Items.Add(device);
 
@@ -94,7 +84,7 @@ namespace Asset_Managing_System
 				Status.Text = "就绪";
 
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.ToString());
 				Status.Text = "就绪";
@@ -112,6 +102,37 @@ namespace Asset_Managing_System
 			string type = "add";
 			Window1 window = new Window1(type);
 			window.Show();
+		}
+
+		private void EditDevice_Click(object sender, RoutedEventArgs e)
+		{
+			Device device = DeviceList.SelectedItem as Device;
+			if (device == null)
+			{
+				Window1 window = new Window1("edit");
+				window.Show();
+
+			}
+			else
+			{
+				Window1 window = new Window1("edit", device.ID);
+				window.Show();
+
+			}
+
+			/*try
+			{
+				Window1 window = new Window1("edit", device.ID);
+				window.Show();
+			}
+			catch (Exception ex)
+			{
+				if (ex.GetBaseException() == (new System.NullReferenceException()))
+				{
+					Window1 window = new Window1("edit");
+					window.Show();
+				}
+			}*/
 		}
 	}
 

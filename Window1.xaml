@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Asset_Managing_System"
 		mc:Ignorable="d"
-		Title="添加设备" Height="318" Width="483">
+		Title="编辑设备" Height="318" Width="483">
 	<Grid>
 		<Label Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 		<Label Content="编号" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>

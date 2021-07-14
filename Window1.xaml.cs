@@ -24,7 +24,39 @@ namespace Asset_Managing_System
 		public Window1(string type)
 		{
 			InitializeComponent();
-			MessageBox.Show(type);
+			//MessageBox.Show(type);
+		}
+
+		public Window1(string type, int ID)
+		{
+			InitializeComponent();
+			//MessageBox.Show(ID.ToString());
+
+			MySqlConnection connection = new MySqlConnection(File.ReadAllText("connectionInfo.txt"));
+			try
+			{
+				connection.Open();
+				MySqlCommand command = new MySqlCommand("select * from `device` where id=" + ID.ToString(), connection);
+				MySqlDataReader reader = command.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+
+				while (reader.Read())
+				{
+					this.ID.Text = reader.GetString("ID");
+					Code.Text = reader.GetString("Code");
+					Name.Text = reader.GetString("Name");
+					Model.Text = reader.GetString("Model");
+					Vendor.Text = reader.GetString("Vendor");
+					Price.Text = reader.GetString("Price");
+					SN.Text = reader.GetString("SN");
+
+				}
+
+
+			}
+			finally
+			{
+
+			}
 		}
 
 		// 插入sql语句：
@@ -38,7 +70,7 @@ namespace Asset_Managing_System
 			{
 				connection.Open();
 				string commandSentense = "insert into `device` (`ID`, `Code`, `Name`, `Model`, `Vendor`, `Price`, `SN`)"
-					+ " values ('" + Int32.Parse(ID.Text) + "', '" + Code.Text + "', '" + Name.Text + "', '" +Model.Text + "', '" + Vendor.Text + "', '" + Price.Text + "', '" + SN.Text + "');";
+					+ " values ('" + Int32.Parse(ID.Text) + "', '" + Code.Text + "', '" + Name.Text + "', '" + Model.Text + "', '" + Vendor.Text + "', '" + Price.Text + "', '" + SN.Text + "');";
 				MySqlCommand command = new MySqlCommand(commandSentense, connection);
 				//MessageBox.Show(commandSentense);
 				MySqlDataReader reader = command.ExecuteReader();
@@ -47,7 +79,7 @@ namespace Asset_Managing_System
 				ID.Text = (Int32.Parse(ID.Text) + 1).ToString();
 
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.ToString());
 				succeed = false;
